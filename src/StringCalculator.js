@@ -4,13 +4,7 @@
 function StringCalculator () {}
 
 StringCalculator.prototype.add = function (stringNumbers) {
-    var sum = 0;
-
-    if (stringNumbers){
-        return stringNumbers.split(',').reduce(function (previousValue, currentValue) {
-            return previousValue + parseInt(currentValue, 10);
-        }, 0);
-    }
-
-    return sum;
+    return stringNumbers.split(',').reduce(function (previousValue, currentValue) {
+        return previousValue + Number(currentValue);
+    }, 0);
 };
