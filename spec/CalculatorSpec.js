@@ -20,4 +20,13 @@ describe('string calculator', function () {
         expect(calculator.add('1,2')).toEqual(3);
     });
 
+    describe('should count of unknown amount of numbers', function () {
+        it('should count sum of "1,2,3" as 6', function () {
+            expect(calculator.add('1,2,3')).toEqual(6);
+        });
+        it('should count sum of "2,3,5" as 10', function () {
+            expect(calculator.add('2,3,5')).toEqual(10);
+        });
+    });
+
 });
