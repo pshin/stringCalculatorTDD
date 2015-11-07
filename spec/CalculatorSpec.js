@@ -47,4 +47,10 @@ describe('string calculator', function () {
         });
     });
 
+    describe('numbers bigger than 1000 should be ignored', function () {
+        it('should count sum "//;\n5;1000" as 5', function () {
+            expect(calculator.add('//;\n5;1001')).toEqual(5);
+        });
+    });
+
 });

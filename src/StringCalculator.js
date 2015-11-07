@@ -8,7 +8,7 @@ StringCalculator.prototype.add = function (stringNumbers) {
 
     return stringNumbers.split(delimiter || /,|\n/g).reduce(function (previousValue, currentValue) {
         currentValue = Number(currentValue);
-        if (!Number.isInteger(currentValue)) {
+        if (!Number.isInteger(currentValue) || currentValue > 1000) {
             currentValue = 0;
         }
         if (currentValue < 0) {
