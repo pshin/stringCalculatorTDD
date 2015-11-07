@@ -4,7 +4,13 @@
 function StringCalculator () {}
 
 StringCalculator.prototype.add = function (stringNumbers) {
-    return stringNumbers.split(/,|\n/g).reduce(function (previousValue, currentValue) {
-        return previousValue + Number(currentValue);
+    var delimiter = stringNumbers.replace(/(^\/\/(.*)\n)/, '') && RegExp.$2;
+
+    return stringNumbers.split(delimiter || /,|\n/g).reduce(function (previousValue, currentValue) {
+        currentValue = Number(currentValue);
+        if (!Number.isInteger(currentValue)) {
+            currentValue = 0;
+        }
+        return previousValue + currentValue;
     }, 0);
 };

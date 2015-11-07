@@ -33,7 +33,12 @@ describe('string calculator', function () {
         it('should count sum "1\n2,3" as 6', function () {
             expect(calculator.add('1\n2,3')).toEqual(6);
         });
+    });
 
+    describe('should support different delimitters', function () {
+        it('should count sum "//;\n5;6" as 11', function () {
+            expect(calculator.add('//;\n5;6')).toEqual(11);
+        });
     });
 
 });
