@@ -29,4 +29,11 @@ describe('string calculator', function () {
         });
     });
 
+    describe('should handle new lines', function () {
+        it('should count sum "1\n2,3" as 6', function () {
+            expect(calculator.add('1\n2,3')).toEqual(6);
+        });
+
+    });
+
 });

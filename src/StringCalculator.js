@@ -4,7 +4,7 @@
 function StringCalculator () {}
 
 StringCalculator.prototype.add = function (stringNumbers) {
-    return stringNumbers.split(',').reduce(function (previousValue, currentValue) {
+    return stringNumbers.split(/,|\n/g).reduce(function (previousValue, currentValue) {
         return previousValue + Number(currentValue);
     }, 0);
 };
