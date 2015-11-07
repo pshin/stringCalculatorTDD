@@ -4,9 +4,9 @@
 function StringCalculator () {}
 
 StringCalculator.prototype.add = function (stringNumbers) {
-    var delimiter = stringNumbers.replace(/(^\/\/(.*)\n)/, '') && RegExp.$2;
+    stringNumbers = stringNumbers.replace(/(^\/\/\[?([^\]]*)]?\n)/, '');
 
-    return stringNumbers.split(delimiter || /,|\n/g).reduce(function (previousValue, currentValue) {
+    return stringNumbers.split(RegExp.$2 || /,|\n/g).reduce(function (previousValue, currentValue) {
         currentValue = Number(currentValue);
         if (!Number.isInteger(currentValue) || currentValue > 1000) {
             currentValue = 0;

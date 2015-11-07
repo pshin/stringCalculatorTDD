@@ -53,4 +53,10 @@ describe('string calculator', function () {
         });
     });
 
+    describe('delimiters can be of any length', function () {
+        it('should count sum "//[***]\n1***2***3" as 6', function () {
+            expect(calculator.add('//[***]\n1***2***3')).toEqual(6);
+        });
+    });
+
 });
