@@ -41,4 +41,10 @@ describe('string calculator', function () {
         });
     });
 
+    describe('calling add with negative numbers throw exception', function () {
+        it('should check that "//;\n5;-6" throw exception', function () {
+            expect(calculator.add.bind(null, '//;\n5;-6')).toThrow();
+        });
+    });
+
 });

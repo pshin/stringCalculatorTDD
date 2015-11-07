@@ -11,6 +11,9 @@ StringCalculator.prototype.add = function (stringNumbers) {
         if (!Number.isInteger(currentValue)) {
             currentValue = 0;
         }
+        if (currentValue < 0) {
+            throw new Error('negatives not allowed');
+        }
         return previousValue + currentValue;
     }, 0);
 };
