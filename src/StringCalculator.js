@@ -4,8 +4,24 @@
 function StringCalculator () {}
 
 StringCalculator.prototype.add = function (stringNumbers) {
-    return stringNumbers.replace(/(^\/\/\[?([^\]]*)]?\n)/, '')
-        .split(RegExp.$2 || /,|\n/g)
+    stringNumbers = stringNumbers.replace(/(^\/\/\[?(.*)]?\n)/, '');
+
+    var delimitter = RegExp.$2;
+
+    if (delimitter.match(/\[|]/g)) {
+        delimitter
+            .split(/\[|]/)
+            .forEach(function (element) {
+                while (element && stringNumbers.indexOf(element) !== -1) {
+                    stringNumbers = stringNumbers.replace(element, ',');
+                }
+            });
+
+        delimitter = false;
+    }
+
+    return stringNumbers
+        .split(delimitter || /,|\n/g)
         .reduce(function (previousValue, currentValue) {
             currentValue = Number(currentValue);
             if (!Number.isInteger(currentValue) || currentValue > 1000) {

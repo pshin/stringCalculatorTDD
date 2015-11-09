@@ -59,4 +59,16 @@ describe('string calculator', function () {
         });
     });
 
+    describe('allow multiple delimitters', function () {
+        it('should count sum "//[*][%]\n1*2%3" as 6', function () {
+            expect(calculator.add('//[*][%]\n1*2%3')).toEqual(6);
+        });
+    });
+
+    describe('make sure you can also handle multiple delimiters with length longer than one char', function () {
+        it('should count sum "//[***][%%]\n1***2%%3" as 6', function () {
+            expect(calculator.add('//[***][%%]\n1***2%%3')).toEqual(6);
+        });
+    });
+
 });
